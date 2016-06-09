@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>testing</title>
+</head>
+<body>
+    <body onload="startGame()">
+<script>
+
+var redGamePiece, blueGamePiece, yellowGamePiece;
+var charImage, rockImage1, rockImage2, rockImage3;
+charImage = rockImage1 = rockImage2 = rockImage3 = new Image();
+
+    charImage.src = './sprites/stand.png';
+    rockImage1.src = './sprites/rock_1.png';
+    rockImage2.src = './sprites/rock_2.png';
+    rockImage3.src = './sprites/rock_3.png';
+function startGame() {
+    redGamePiece = new component(rockImage2, 10, 10);
+    blueGamePiece = new component(rockImage1, 10, 10);
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.interval = setInterval(updateGameArea, 20);
+    },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+function component(image, x, y) {
+    this.x = x;
+    this.y = y;    
+    this.update = function(){
+        ctx = myGameArea.context;
+        ctx.drawImage(image,this.x, this.y);
+    }
+}
+
+function updateGameArea(e) {
+    myGameArea.clear();
+
+    redGamePiece.x += 1;          
+    redGamePiece.update();
+    blueGamePiece.y += 1;
+    blueGamePiece.update();
+}
+</script>
+</body>
+</html>

@@ -5,9 +5,20 @@
 		<title>Jc Din Canvas</title>
 	</head>
 	<body>
-		<canvas id="myCanvas"></canvas>
+		<style type="text/css">
+			body {
+				width: 100%;
+				overflow-x: hidden;
+			}
+			canvas {
+				background: url('./bg/bg2.png');
+				background-repeat: repeat-x;
+			}
+		</style>
+		<canvas id="myCanvas" height="270" tabindex="0"></canvas>
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"
               integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
               crossorigin="anonymous"></script>
+        <script type="text/javascript" src="app.js"></script>
 	</body>
 </html>
